@@ -5,7 +5,6 @@ var $firstCopy=$imgs.eq(0).clone(true);
 var $lastCopy=$imgs.eq($imgs.length-1).clone(true);
 $slides.append($firstCopy);
 $slides.prepend($lastCopy);
-//第一张图片 current=1;最后一张图片current=$button.length;
 var current=0;
 $slides.css({transform:'translateX(-920px)'});
 
@@ -44,32 +43,3 @@ function goToSlide(index){
     current=index;
 }
 
-// $("#prevBtn").on('click',function(){
-//     console.log(current);
-//     goToSlide(current-1);
-// });
-// $("#nextBtn").on('click',function(){
-//     console.log(current);
-//     goToSlide(current+1);
-// });
-var timer=setInterval(function(){
-    goToSlide(current+1);
-
-},2000);
-$(".container").on('mouseenter',function(){
-    window.clearInterval(timer);
-});
-$(".container").on('mouseleave',function(){
-    timer=setInterval(function(){
-        goToSlide(current+1);
-    },2000);
-});
-document.addEventListener("visibilitychange",function(e){
-    if(document.hidden){
-       clearInterval(timer);
-    }else{
-        timer=setInterval(function(){
-            goToSlide(current+1);
-        },2000);
-    }
- });
